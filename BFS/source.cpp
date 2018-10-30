@@ -44,9 +44,15 @@ int main()
     graph.assign(n, vector<int>()); 
   
     int a, b; 
+    bool bidir = 1 ;
+    
     for (int i = 0; i < e; i++) { 
         cin >> a >> b; 
         edge(a, b); 
+        if(bidir)
+        {
+        edge(b,a) ;
+        }
     } 
   
     for (int i = 0; i < n; i++) { 
