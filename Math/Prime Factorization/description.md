@@ -1,0 +1,1 @@
+# Prime Factorization in O(log N) using prime sieve and smallest prime factor method
