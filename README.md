@@ -1,4 +1,4 @@
-# Algorithm - Library
+# Algorithm-Library
 Contains implementation of Algorithms in various languages
 
 # For creating Pull requests 
