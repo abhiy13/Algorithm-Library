@@ -2,12 +2,12 @@
 using namespace std;
 using ll = long long;
 
-#define MAX 500005
-ll bit[MAX];
+// T can be any datatype
+using T = int;
+vector<T> bit;
 
-ll query(int idx)
-{
-    ll sum = 0;
+T query(int idx) {
+    T sum = 0;
     while (idx) {
         sum += bit[idx];
         idx -= (idx & -idx);
@@ -15,36 +15,32 @@ ll query(int idx)
     return sum;
 }
 
-void update(ll idx,ll x){
-   while (idx < MAX) {
+void update(int idx, T x){
+   int bound = (int) bit.size();
+   while (idx <= bound) {
         bit[idx] += x;
         idx += (idx & -idx);
     }
 }
 
 int main() {
-    ll n;
-    cin >> n;
-    vector<ll> a(n);
+    int n; cin >> n;
+    vector<int> a(n);
+    bit.resize(n);
     for(ll i = 1; i <= n; i++) {
         cin >> a[i];
         update(i, a[i]);
     }
-    ll q;
-    cin >> q;
+    int q; cin >> q;
     while (q--) {
-        ll choice;
+        int choice;
         cin >> choice;
-        if (choice)
-        {
-            ll l, r;
+        if (choice) {
+            int l, r;
             cin >> l >> r;
-            cout << query(r) - query(l-1) << endl;
-        }
-        else 
-        {
-            ll p; 
-            ll x;
+            cout << query(r) - query(l - 1) << endl;
+        } else {
+            int p; T x;
             cin >> p >> x; 
             update(p, x);
         }
